@@ -202,38 +202,22 @@ namespace hl2glsl
 
         public override Node ExitRegisterFunc(Production node)
         {
-            //throw new UnsupportedTokenException(node.ToString());
-            Console.WriteLine("GLSL does not support direct access to registers, so, you can't use register.");
-            Console.WriteLine("Remove it from code? (Keeping it in the code will cause the GLSL code not to compile) Y/N");
-            string key = Console.ReadLine().ToString();
-            if (key == "y")
-                removeRegAndPack = true;
-
+            Console.WriteLine("GLSL does not support direct access to registers, so, you can't use register.");            
+            removeRegAndPack = true;
             return node;
         }
 
         public override Node ExitPackoffsetFunc(Production node)
         {
-            //throw new UnsupportedTokenException(node.ToString());
             Console.WriteLine("GLSL does not support direct access to registers, so, you can't use packoffset.");
-            //if the user already said to remove the register, it's not necessary to ask again
-            if (removeRegAndPack == false)
-            {
-                Console.WriteLine("Remove it from code? (Keeping it in the code will cause the GLSL code not to compile) Y/N");
-                string key = Console.ReadLine().ToString();
-                if (key == "y")
-                    removeRegAndPack = true;
-            }
+            removeRegAndPack = true;
             return node;
         }
 
         public override Node ExitBasicUint(Token node)
         {
-            Console.WriteLine("GLSL does not support 'uint'. Replace it by 'int'? Y/N");
-            string key = Console.ReadLine().ToString();
-            if (key == "y")
-                CheckAndReplace(node, "uint", "int");
-            else Console.WriteLine("The code will not be consistent");
+            Console.WriteLine("GLSL does not support 'uint'. Replacing with 'int'.");
+            CheckAndReplace(node, "uint", "int");
             return base.ExitBasicUint(node);
         }
 
