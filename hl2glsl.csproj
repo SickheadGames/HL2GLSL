@@ -8,8 +8,8 @@
     <ProjectGuid>{2E192089-DBB1-4F0D-8426-48CCBD11C5F5}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>hl2glsl___Visual_Studio</RootNamespace>
-    <AssemblyName>hl2glsl - Visual Studio</AssemblyName>
+    <RootNamespace>hl2glsl</RootNamespace>
+    <AssemblyName>hl2glsl</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
@@ -67,5 +67,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
+    <None Include="tests\BloomPostprocess\Microsoft Permissive License.rtf" />
+    <None Include="tests\Simple3DGameXaml\license.rtf" />
+    <None Include="tests\StockEffects\Common.fxh" />
+    <None Include="tests\StockEffects\Lighting.fxh" />
+    <None Include="tests\StockEffects\Macros.fxh" />
+    <None Include="tests\StockEffects\Microsoft Permissive License.rtf" />
+    <None Include="tests\StockEffects\Structures.fxh" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tests\BloomPostprocess\BloomCombine.fx" />
+    <Content Include="tests\BloomPostprocess\BloomExtract.fx" />
+    <Content Include="tests\BloomPostprocess\GaussianBlur.fx" />
+    <Content Include="tests\Simple3DGameXaml\ConstantBuffers.hlsli" />
+    <Content Include="tests\Simple3DGameXaml\PixelShader.hlsl" />
+    <Content Include="tests\Simple3DGameXaml\PixelShaderFlat.hlsl" />
+    <Content Include="tests\Simple3DGameXaml\VertexShader.hlsl" />
+    <Content Include="tests\Simple3DGameXaml\VertexShaderFlat.hlsl" />
+    <Content Include="tests\StockEffects\AlphaTestEffect.fx" />
+    <Content Include="tests\StockEffects\BasicEffect.fx" />
+    <Content Include="tests\StockEffects\DualTextureEffect.fx" />
+    <Content Include="tests\StockEffects\EnvironmentMapEffect.fx" />
+    <Content Include="tests\StockEffects\SkinnedEffect.fx" />
+    <Content Include="tests\StockEffects\SpriteEffect.fx" />
   </ItemGroup>
 </Project>
