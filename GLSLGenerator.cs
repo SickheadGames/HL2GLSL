@@ -43,8 +43,8 @@ namespace hl2glsl
         // intrinsic functions that are not supported by GLSL, thus, can not be converted
         private string [] nsIntrinsicFunctions = {"asuint","clip","cosh","D3DCOLORtoUBYTE4","determinant","frexp",
                                                   "GetRenderTargetSampleCount","GetRenderTargetSamplePosition",
-                                                  "isfinite","isinf","isnan","ldexp","lerp","lit","log10",
-                                                  "modf","round","saturate","sincos","sinh","tanh","tex1Dbias",
+                                                  "isfinite","isinf","isnan","ldexp","lit","log10",
+                                                  "modf","round","sincos","sinh","tanh","tex1Dbias",
                                                   "tex1Dgrad","tex2Dbias","tex2Dgrad","tex3Dbias","tex3Dgrad",
                                                   "texCUBEbias","texCUBEgrad","transpose","trunc"};
         
@@ -116,8 +116,9 @@ namespace hl2glsl
             eqIntrinsicFunctions.Add("ddx","dFdx");
             eqIntrinsicFunctions.Add("ddy","dFdy");
             eqIntrinsicFunctions.Add("fmod","mod");
-            eqIntrinsicFunctions.Add("frac","fract");
-            eqIntrinsicFunctions.Add("noise","noise1");
+            eqIntrinsicFunctions.Add("frac", "fract");
+            eqIntrinsicFunctions.Add("lerp", "mix");
+            eqIntrinsicFunctions.Add("noise", "noise1");
             eqIntrinsicFunctions.Add("rsqrt","inversesqrt");
             eqIntrinsicFunctions.Add("tex1D","texture1D");
             eqIntrinsicFunctions.Add("tex1Dlod","texture1DLod");
@@ -130,8 +131,7 @@ namespace hl2glsl
             eqIntrinsicFunctions.Add("tex3Dproj","texture3DProj");
             eqIntrinsicFunctions.Add("texCube", "textureCube");
             eqIntrinsicFunctions.Add("texCubelod", "textureCubeLod");
-            eqIntrinsicFunctions.Add("texCubeproj","textureCubeProj");   
-            
+            eqIntrinsicFunctions.Add("texCubeproj","textureCubeProj");
 		}
 
         
@@ -510,6 +510,19 @@ namespace hl2glsl
 				
 				GrammaticaNodeUtils.SwapChildrenPosition(listOfParam, exp1, exp2);
 			}
+
+            // saturate(x) => clamp(x,0.0,1.0).
+            if (identifier.GetImage().Equals("saturate"))
+            {
+                identifier.AddValue("clamp");
+
+                var listOfParam = (Production)GrammaticaNodeUtils.FindChildOf(node, "PartOf_Constructor_Call");
+                var children = GrammaticaNodeUtils.GetChildren(listOfParam);
+                children.Insert(2, GrammaticaNodeUtils.CreateCommaToken());
+                children.Insert(3, GrammaticaNodeUtils.CreateNumberToken(0.0f));
+                children.Insert(4, GrammaticaNodeUtils.CreateCommaToken());
+                children.Insert(5, GrammaticaNodeUtils.CreateNumberToken(1.0f));
+            }
 
             // add dependent function
 			Node n = GrammaticaNodeUtils.FindChildOf(node, "PartOf_Constructor_Call");

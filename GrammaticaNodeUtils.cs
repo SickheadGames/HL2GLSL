@@ -8,6 +8,7 @@ using System;
 using System.Reflection;
 using System.Collections;
 using PerCederberg.Grammatica.Parser;
+using System.Globalization;
 
 namespace hl2glsl {
 	public class GrammaticaNodeUtils {
@@ -97,7 +98,14 @@ namespace hl2glsl {
 			ArrayList lista = GetChildren(parent);
 			ArrayListUtils.SwapPosition(lista, node1, node2);
 		}
-	
+
+        public static Node CreateCommaToken()
+        {
+            TokenPattern patternCOMMA = new TokenPattern((int)HlslConstants.COMMA,
+                                      "COMMA", TokenPattern.PatternType.STRING, ",");
+            return new Token(patternCOMMA, patternCOMMA.GetPattern(), 1, 1);
+        }
+
 		public static Node CreateDotCommaToken() {
 			TokenPattern patternDOT_COMMA = new TokenPattern((int) HlslConstants.DOT_COMMA,
                                       "DOT_COMMA", TokenPattern.PatternType.STRING, ";");	
@@ -135,9 +143,15 @@ namespace hl2glsl {
             TokenPattern patternEqual = new TokenPattern((int)HlslConstants.EQUAL,
                                         "EQUAL", TokenPattern.PatternType.STRING, "=");
             return new Token(patternEqual, patternEqual.GetPattern(), 1, 1);
-	
-
         }
+
+        public static Node CreateNumberToken(float value)
+        {
+            var pattern = new TokenPattern((int)HlslConstants.NUMBER,
+                                        "NUMBER", TokenPattern.PatternType.STRING, value.ToString("0.0######",CultureInfo.InvariantCulture));
+            return new Token(pattern, pattern.GetPattern(), 1, 1);
+        }
+
 		// Dado um nodo pai, e o índice do nodo filho, esta função busca em índeces anteriores e posteriores 
 		// os comentários pertinentes e move para dentro do nodeToPut. 
 		// O objetivo desta função é preparar os nodos para serem movidos, levando consigo seus comentários.  
