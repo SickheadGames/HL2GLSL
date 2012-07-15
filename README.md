@@ -1,7 +1,9 @@
 HL2GLSL
 =======
 
-This is a fork of the HL2GLSL library from CodePlex:
+HL2GLSL is a translator between High Level Shading Language and OpenGL Shading Language.  
 
-http://hl2glsl.codeplex.com/
+This is a fork of the original project on CodePlex:
+
+  http://hl2glsl.codeplex.com/
 

@@ -58,12 +58,11 @@
     <Compile Include="UnsupportedTokenException.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="grammatica-1.4, Version=0.0.0.0, Culture=neutral">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\Debug\grammatica-1.4.dll</HintPath>
-    </Reference>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <Reference Include="grammatica-1.4">
+      <HintPath>dependencies\grammatica-1.4.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
