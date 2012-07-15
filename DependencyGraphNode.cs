@@ -18,6 +18,10 @@ namespace hl2glsl {
 		}
 		
 		public void AddCallsBy(DependencyGraphNode func) {
+
+            if (func == null)
+                return;
+
 			for (int i=0; i<calledBy.Count; i++) {
 				if (func == calledBy[i]) return;	
 			}
@@ -37,7 +41,9 @@ namespace hl2glsl {
 			for (int i=0; i<calledBy.Count; i++) {
 				if (toReplace == calledBy[i]) {
 					calledBy.Remove(toReplace);
-					calledBy.Add(newOne);
+
+                    if (newOne != null)
+    					calledBy.Add(newOne);
 					return;
 				}
 			}

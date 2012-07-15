@@ -35,6 +35,7 @@ namespace hl2glsl
     		
     		if (args.Length < 2) {
     			Console.WriteLine("You must pass at least one externalizable function as the main!");	
+                return;
     		}
 	
 			MainClass m = new MainClass();

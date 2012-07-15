@@ -65,4 +65,7 @@
       <HintPath>dependencies\grammatica-1.4.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
 </Project>
