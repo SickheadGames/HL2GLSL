@@ -66,6 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="parser\hlsl.grammar" />
     <None Include="README.md" />
     <None Include="tests\BloomPostprocess\Microsoft Permissive License.rtf" />
     <None Include="tests\Simple3DGameXaml\license.rtf" />
