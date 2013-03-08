@@ -1,12 +1,12 @@
 HL2GLSL
 =======
 
-HL2GLSL is pure C# translator between High Level Shading Language and OpenGL Shading Language.
+HL2GLSL is pure C# translator between High Level Shading Language and the OpenGL Shading Language.
 
-This is a fork of the original project on CodePlex:
+This is a fork of the [original HL2GLSL project](http://hl2glsl.codeplex.com/) hosted on CodePlex.
 
-  http://hl2glsl.codeplex.com/
 
+**WARNING:** *This project is still in development and may not function with your shaders yet.*
 
 Usage
 =====
